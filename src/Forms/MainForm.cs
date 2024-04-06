@@ -10,9 +10,9 @@ public partial class MainForm : Form
 
     private DataContext _db;
 
-    public MainForm(DataContext db)
+    public MainForm()
     {
-        _db = db;
+        _db = new DataContext();
         InitializeComponent();
     }
 

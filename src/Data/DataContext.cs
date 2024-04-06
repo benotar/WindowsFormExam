@@ -8,8 +8,15 @@ public class DataContext : DbContext
 {
     public DbSet<Todo> ToDoes {  get; set; }
 
-    public DataContext(DbContextOptions<DataContext> options)
-        : base(options) { }
+    public DataContext()
+    {
+        Database.EnsureCreated();
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseMySql("server=127.0.0.1;user=root;database=WinFormsExamDB", ServerVersion.Parse("8.0.30-mysql"));
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
