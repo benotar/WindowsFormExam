@@ -102,6 +102,7 @@
             SaveButton.Size = new Size(129, 50);
             SaveButton.TabIndex = 6;
             SaveButton.Text = "Save";
+            SaveButton.Click += SaveBtnClick;
             SaveButton.UseVisualStyleBackColor = false;
             // 
             // AddToDoForm
@@ -118,7 +119,7 @@
             Controls.Add(newTODOTitleLabel);
             Controls.Add(newTODOTitleTextBox);
             Name = "AddToDoForm";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "New TODO";
             ResumeLayout(false);
             PerformLayout();

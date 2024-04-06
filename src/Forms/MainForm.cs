@@ -35,7 +35,9 @@ public partial class MainForm : Form
 
     private void AddToDoButtonClick(object sender, EventArgs e)
     {
+        AddToDoForm addToDoForm = new AddToDoForm(_db);
 
+        addToDoForm.Show();
     }
 
     private void ReadText(string text)

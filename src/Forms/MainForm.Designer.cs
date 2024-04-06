@@ -80,6 +80,7 @@ partial class MainForm
         addToDoButton.Size = new Size(166, 50);
         addToDoButton.TabIndex = 3;
         addToDoButton.Text = "Add TODO";
+        addToDoButton.Click += AddToDoButtonClick;
         addToDoButton.UseVisualStyleBackColor = false;
         // 
         // MainForm
