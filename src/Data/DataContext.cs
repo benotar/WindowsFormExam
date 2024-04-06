@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Microsoft.EntityFrameworkCore;
+using WindowsFormExam.Entities;
 
-namespace WindowsFormExam.Data
+namespace WindowsFormExam.Data;
+
+public class DataContext : DbContext
 {
-    internal class DataContext
-    {
-    }
+    public DbSet<Todo> ToDoes {  get; set; }
+
+    public DataContext(DbContextOptions<DataContext> options)
+        :base(options) { }
 }
