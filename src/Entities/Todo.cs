@@ -16,4 +16,9 @@ public class Todo
     public DateTime CreatedDate { get; set; } = DateTime.Now;
     [Column("ending_date")]
     public DateTime EndingDate { get; set;}
+
+    public override string ToString()
+    {
+        return $"{Id}. {Title} - {Description}.";
+    }
 }

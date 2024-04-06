@@ -28,31 +28,82 @@ partial class MainForm
     /// </summary>
     private void InitializeComponent()
     {
-        listBox1 = new ListBox();
+        toDoesListBox = new ListBox();
+        tittleLabel = new Label();
+        deleteToDoButton = new Button();
+        addToDoButton = new Button();
         SuspendLayout();
         // 
-        // listBox1
+        // toDoesListBox
         // 
-        listBox1.FormattingEnabled = true;
-        listBox1.ItemHeight = 15;
-        listBox1.Location = new Point(12, 79);
-        listBox1.Name = "listBox1";
-        listBox1.Size = new Size(625, 349);
-        listBox1.TabIndex = 0;
+        toDoesListBox.BackColor = Color.Linen;
+        toDoesListBox.Cursor = Cursors.Hand;
+        toDoesListBox.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        toDoesListBox.FormattingEnabled = true;
+        toDoesListBox.ItemHeight = 25;
+        toDoesListBox.Location = new Point(12, 76);
+        toDoesListBox.Name = "toDoesListBox";
+        toDoesListBox.ScrollAlwaysVisible = true;
+        toDoesListBox.Size = new Size(461, 354);
+        toDoesListBox.TabIndex = 0;
+        // 
+        // tittleLabel
+        // 
+        tittleLabel.AutoSize = true;
+        tittleLabel.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+        tittleLabel.Location = new Point(194, 29);
+        tittleLabel.Name = "tittleLabel";
+        tittleLabel.Size = new Size(67, 25);
+        tittleLabel.TabIndex = 1;
+        tittleLabel.Text = "TODO:";
+        // 
+        // deleteToDoButton
+        // 
+        deleteToDoButton.BackColor = Color.Navy;
+        deleteToDoButton.Font = new Font("Cascadia Code", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+        deleteToDoButton.ForeColor = Color.LawnGreen;
+        deleteToDoButton.Location = new Point(12, 466);
+        deleteToDoButton.Name = "deleteToDoButton";
+        deleteToDoButton.Size = new Size(154, 50);
+        deleteToDoButton.TabIndex = 2;
+        deleteToDoButton.Text = "Delete TODO";
+        deleteToDoButton.UseVisualStyleBackColor = false;
+        // 
+        // addToDoButton
+        // 
+        addToDoButton.BackColor = Color.OliveDrab;
+        addToDoButton.BackgroundImageLayout = ImageLayout.Center;
+        addToDoButton.Font = new Font("Cascadia Code", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+        addToDoButton.ForeColor = Color.GreenYellow;
+        addToDoButton.Location = new Point(307, 466);
+        addToDoButton.Name = "addToDoButton";
+        addToDoButton.Size = new Size(166, 50);
+        addToDoButton.TabIndex = 3;
+        addToDoButton.Text = "Add TODO";
+        addToDoButton.UseVisualStyleBackColor = false;
         // 
         // MainForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
-        BackColor = SystemColors.ActiveCaption;
-        ClientSize = new Size(649, 442);
-        Controls.Add(listBox1);
+        BackColor = Color.Teal;
+        ClientSize = new Size(484, 539);
+        Controls.Add(addToDoButton);
+        Controls.Add(deleteToDoButton);
+        Controls.Add(tittleLabel);
+        Controls.Add(toDoesListBox);
         Name = "MainForm";
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "ToDo";
+        Load += MainFormLoad;
         ResumeLayout(false);
+        PerformLayout();
     }
 
     #endregion
 
-    private ListBox listBox1;
+    private ListBox toDoesListBox;
+    private Label tittleLabel;
+    private Button deleteToDoButton;
+    private Button addToDoButton;
 }
