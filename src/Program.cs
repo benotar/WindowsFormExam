@@ -13,15 +13,21 @@ internal static class Program
     [STAThread]
     static void Main()
     {
-        ConfigurationBuilder builder = new ConfigurationBuilder();
-        builder.SetBasePath(Directory.GetCurrentDirectory());
-        builder.AddJsonFile("Properties/appsettings.json");
-        IConfigurationRoot? config = builder.Build();
-        string stringConnection = config.GetConnectionString("DefaultSQLConnection");
-        DbContextOptionsBuilder<DataContext> optionsBuilder = new DbContextOptionsBuilder<DataContext>();
-        DbContextOptions<DataContext> options = optionsBuilder.UseMySql(stringConnection, ServerVersion.Parse("8.0.30-myslq")).Options;
+        var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json");
 
-        ApplicationConfiguration.Initialize();
-        Application.Run(new MainForm(options));
+        IConfigurationRoot config = builder.Build();
+
+        string? stringConnection = config.GetConnectionString("DefaultConnection");
+
+        var options = new DbContextOptionsBuilder<DataContext>()
+            .UseMySql(stringConnection, ServerVersion.Parse("8.0.30-mysql")).Options;
+
+        using (var db = new DataContext(options))
+        {
+            ApplicationConfiguration.Initialize();
+            Application.Run(new MainForm(db));
+        }
     }
 }
