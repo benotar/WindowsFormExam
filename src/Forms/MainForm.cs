@@ -19,7 +19,7 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
-    
+
     private void MainFormLoad(object sender, EventArgs e)
     {
         tittleLabel.Text = "TODO:";
@@ -40,7 +40,7 @@ public partial class MainForm : Form
         addToDoForm.Show();
     }
 
-    private void EditTodoButtonClick(object sender, EventArgs e)
+    private void EditToDoButtonClick(object sender, EventArgs e)
     {
         if (toDoesListBox.SelectedItem is null)
         {
@@ -53,6 +53,42 @@ public partial class MainForm : Form
         EditToDoForm editToDoForm = new EditToDoForm(_db, toDoesListBox.SelectedItem);
 
         editToDoForm.Show();
+    }
+
+    private void DeleteToDoButtonClick(object sender, EventArgs e)
+    {
+        Todo? selectedTodo = toDoesListBox.SelectedItem as Todo;
+
+        if (selectedTodo is null)
+        {
+            MessageBox.Show("Something went wrong! No TODO selected!");
+
+            return;
+        }
+
+        var deleteTodo = _db.ToDoes.Where(td => td.Id == selectedTodo.Id).FirstOrDefault();
+
+        if (deleteTodo is null)
+        {
+            MessageBox.Show("Selected TODO not found in the database!");
+
+            return;
+        }
+
+        try
+        {
+            _db.Remove(deleteTodo);
+
+            _db.SaveChanges();
+
+            MessageBox.Show("Deleted successfully!");
+
+            RefreshListTODOMainForm();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"An error occurred while deleting TODO: {ex.Message}");
+        }
     }
 
     public void RefreshListTODOMainForm()

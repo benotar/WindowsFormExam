@@ -72,6 +72,7 @@ partial class MainForm
         deleteToDoButton.TabIndex = 2;
         deleteToDoButton.Text = "Delete TODO";
         deleteToDoButton.UseVisualStyleBackColor = false;
+        deleteToDoButton.Click += DeleteToDoButtonClick;
         // 
         // addToDoButton
         // 
@@ -102,7 +103,7 @@ partial class MainForm
         editToDoButton.TabIndex = 4;
         editToDoButton.Text = "Edit TODO";
         editToDoButton.UseVisualStyleBackColor = false;
-        editToDoButton.Click += EditTodoButtonClick;
+        editToDoButton.Click += EditToDoButtonClick;
         // 
         // MainForm
         // 
