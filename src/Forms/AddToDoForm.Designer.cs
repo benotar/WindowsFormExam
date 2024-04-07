@@ -48,7 +48,8 @@
             // newTODOTitleLabel
             // 
             newTODOTitleLabel.AutoSize = true;
-            newTODOTitleLabel.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            newTODOTitleLabel.Font = new Font("Cascadia Code", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            newTODOTitleLabel.ForeColor = Color.Yellow;
             newTODOTitleLabel.Location = new Point(12, 30);
             newTODOTitleLabel.Name = "newTODOTitleLabel";
             newTODOTitleLabel.Size = new Size(78, 25);
@@ -58,7 +59,8 @@
             // newTODODescriptionLabel
             // 
             newTODODescriptionLabel.AutoSize = true;
-            newTODODescriptionLabel.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            newTODODescriptionLabel.Font = new Font("Cascadia Code", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            newTODODescriptionLabel.ForeColor = Color.Yellow;
             newTODODescriptionLabel.Location = new Point(12, 116);
             newTODODescriptionLabel.Name = "newTODODescriptionLabel";
             newTODODescriptionLabel.Size = new Size(144, 25);
@@ -77,21 +79,22 @@
             // 
             newTODOEndingDateTimePicker.CalendarTitleBackColor = SystemColors.ActiveCaptionText;
             newTODOEndingDateTimePicker.CalendarTitleForeColor = Color.PaleTurquoise;
+            newTODOEndingDateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             newTODOEndingDateTimePicker.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            newTODOEndingDateTimePicker.Format = DateTimePickerFormat.Custom;
             newTODOEndingDateTimePicker.Location = new Point(168, 212);
             newTODOEndingDateTimePicker.MinDate = new DateTime(2024, 4, 6, 22, 5, 20, 0);
             newTODOEndingDateTimePicker.Name = "newTODOEndingDateTimePicker";
+            newTODOEndingDateTimePicker.ShowUpDown = true;
             newTODOEndingDateTimePicker.Size = new Size(270, 30);
             newTODOEndingDateTimePicker.TabIndex = 4;
             newTODOEndingDateTimePicker.Value = new DateTime(2024, 4, 6, 22, 5, 27, 0);
-            newTODOEndingDateTimePicker.Format = DateTimePickerFormat.Custom;
-            newTODOEndingDateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            newTODOEndingDateTimePicker.ShowUpDown = true;
             // 
             // newTODOEndingDateLabel
             // 
             newTODOEndingDateLabel.AutoSize = true;
-            newTODOEndingDateLabel.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            newTODOEndingDateLabel.Font = new Font("Cascadia Code", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            newTODOEndingDateLabel.ForeColor = Color.Yellow;
             newTODOEndingDateLabel.Location = new Point(12, 212);
             newTODOEndingDateLabel.Name = "newTODOEndingDateLabel";
             newTODOEndingDateLabel.Size = new Size(133, 25);
@@ -100,10 +103,10 @@
             // 
             // SaveButton
             // 
-            SaveButton.BackColor = Color.Navy;
+            SaveButton.BackColor = Color.LawnGreen;
             SaveButton.Font = new Font("Cascadia Code", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            SaveButton.ForeColor = Color.LawnGreen;
-            SaveButton.Location = new Point(160, 274);
+            SaveButton.ForeColor = Color.DarkGreen;
+            SaveButton.Location = new Point(145, 275);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new Size(129, 50);
             SaveButton.TabIndex = 6;
@@ -115,7 +118,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Teal;
+            BackColor = Color.SteelBlue;
             ClientSize = new Size(450, 360);
             Controls.Add(SaveButton);
             Controls.Add(newTODOEndingDateLabel);
