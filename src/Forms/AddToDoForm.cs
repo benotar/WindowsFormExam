@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormExam.Data;
+using WindowsFormExam.Entities;
 
 namespace WindowsFormExam.Forms
 {
@@ -24,18 +25,39 @@ namespace WindowsFormExam.Forms
 
         private void SaveBtnClick(object sender, EventArgs e)
         { 
-            if (String.IsNullOrEmpty(newTODOTitleTextBox.Text) ||
-                String.IsNullOrEmpty(newTODODescriptionTextBox.Text) ||
-                 String.IsNullOrEmpty(newTODOEndingDateTimePicker.Text))
+            if (string.IsNullOrEmpty(newTODOTitleTextBox.Text) ||
+                string.IsNullOrEmpty(newTODODescriptionTextBox.Text) ||
+                 string.IsNullOrEmpty(newTODOEndingDateTimePicker.Text))
             {
                 MessageBox.Show("Something went wrong! The data is not filled!");
+                return;
+            }
+
+            Todo newTodo = new Todo
+            {
+                Title = newTODOTitleTextBox.Text,
+                Description = newTODODescriptionTextBox.Text,
+                EndingDate = newTODOEndingDateTimePicker.Value
+            };
+
+            _db.Add(newTodo);
+
+            _db.SaveChanges();
+
+            var mainForm = Application.OpenForms[("MainForm")] as MainForm;
+
+            if (mainForm is null)
+            {
+                MessageBox.Show("Something went wrong!");
 
                 return;
             }
 
-            MessageBox.Show("Temp");
+            mainForm.RefreshListTODOMainForm();
 
-            return;
+            MessageBox.Show("TODO successfully added!");
+
+            this.Close();
         }
     }
 }

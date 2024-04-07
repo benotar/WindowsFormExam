@@ -75,12 +75,18 @@
             // 
             // newTODOEndingDateTimePicker
             // 
-            newTODOEndingDateTimePicker.Location = new Point(253, 215);
+            newTODOEndingDateTimePicker.CalendarTitleBackColor = SystemColors.ActiveCaptionText;
+            newTODOEndingDateTimePicker.CalendarTitleForeColor = Color.PaleTurquoise;
+            newTODOEndingDateTimePicker.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            newTODOEndingDateTimePicker.Location = new Point(168, 212);
             newTODOEndingDateTimePicker.MinDate = new DateTime(2024, 4, 6, 22, 5, 20, 0);
             newTODOEndingDateTimePicker.Name = "newTODOEndingDateTimePicker";
-            newTODOEndingDateTimePicker.Size = new Size(185, 23);
+            newTODOEndingDateTimePicker.Size = new Size(270, 30);
             newTODOEndingDateTimePicker.TabIndex = 4;
             newTODOEndingDateTimePicker.Value = new DateTime(2024, 4, 6, 22, 5, 27, 0);
+            newTODOEndingDateTimePicker.Format = DateTimePickerFormat.Custom;
+            newTODOEndingDateTimePicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            newTODOEndingDateTimePicker.ShowUpDown = true;
             // 
             // newTODOEndingDateLabel
             // 
@@ -102,8 +108,8 @@
             SaveButton.Size = new Size(129, 50);
             SaveButton.TabIndex = 6;
             SaveButton.Text = "Save";
-            SaveButton.Click += SaveBtnClick;
             SaveButton.UseVisualStyleBackColor = false;
+            SaveButton.Click += SaveBtnClick;
             // 
             // AddToDoForm
             // 

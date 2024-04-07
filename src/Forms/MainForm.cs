@@ -40,6 +40,19 @@ public partial class MainForm : Form
         addToDoForm.Show();
     }
 
+
+    public void RefreshListTODOMainForm()
+    {
+        toDoesListBox.Items.Clear();
+
+        List<Todo> todoes = _db.ToDoes.AsNoTracking().ToList();
+
+        foreach (var item in todoes)
+        {
+            toDoesListBox.Items.Add(item);
+        }
+    }
+
     private void ReadText(string text)
     {
 
