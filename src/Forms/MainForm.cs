@@ -22,7 +22,7 @@ public partial class MainForm : Form
 
     private void MainFormLoad(object sender, EventArgs e)
     {
-        tittleLabel.Text = "TODO:";
+        titleLabel.Text = "TODO:";
 
         List<Todo> todoes = _db.ToDoes.AsNoTracking().ToList();
 
@@ -89,6 +89,22 @@ public partial class MainForm : Form
         {
             MessageBox.Show($"An error occurred while deleting TODO: {ex.Message}");
         }
+    }
+
+    private void TodoListDoubleClick(object sender, EventArgs e)
+    {
+        var selectedToDo = toDoesListBox.SelectedItem as Todo;
+
+        if (selectedToDo is null)
+        {
+            MessageBox.Show("Something went wrong! No TODO selected!");
+
+            return;
+        }
+
+        InfoToDoForm infoToDoForm = new InfoToDoForm(selectedToDo);
+
+        infoToDoForm.Show();
     }
 
     public void RefreshListTODOMainForm()

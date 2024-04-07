@@ -29,7 +29,7 @@ partial class MainForm
     private void InitializeComponent()
     {
         toDoesListBox = new ListBox();
-        tittleLabel = new Label();
+        titleLabel = new Label();
         deleteToDoButton = new Button();
         addToDoButton = new Button();
         editToDoButton = new Button();
@@ -47,17 +47,18 @@ partial class MainForm
         toDoesListBox.ScrollAlwaysVisible = true;
         toDoesListBox.Size = new Size(461, 354);
         toDoesListBox.TabIndex = 0;
+        toDoesListBox.DoubleClick += TodoListDoubleClick;
         // 
-        // tittleLabel
+        // titleLabel
         // 
-        tittleLabel.AutoSize = true;
-        tittleLabel.Font = new Font("Cascadia Code", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-        tittleLabel.ForeColor = Color.GreenYellow;
-        tittleLabel.Location = new Point(189, 19);
-        tittleLabel.Name = "tittleLabel";
-        tittleLabel.Size = new Size(95, 35);
-        tittleLabel.TabIndex = 1;
-        tittleLabel.Text = "TODO:";
+        titleLabel.AutoSize = true;
+        titleLabel.Font = new Font("Cascadia Code", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+        titleLabel.ForeColor = Color.GreenYellow;
+        titleLabel.Location = new Point(189, 19);
+        titleLabel.Name = "titleLabel";
+        titleLabel.Size = new Size(95, 35);
+        titleLabel.TabIndex = 1;
+        titleLabel.Text = "TODO:";
         // 
         // deleteToDoButton
         // 
@@ -114,7 +115,7 @@ partial class MainForm
         Controls.Add(editToDoButton);
         Controls.Add(addToDoButton);
         Controls.Add(deleteToDoButton);
-        Controls.Add(tittleLabel);
+        Controls.Add(titleLabel);
         Controls.Add(toDoesListBox);
         Name = "MainForm";
         StartPosition = FormStartPosition.CenterScreen;
@@ -127,7 +128,7 @@ partial class MainForm
     #endregion
 
     private ListBox toDoesListBox;
-    private Label tittleLabel;
+    private Label titleLabel;
     private Button deleteToDoButton;
     private Button addToDoButton;
     private Button editToDoButton;
