@@ -50,7 +50,7 @@ public partial class MainForm : Form
         }
 
         // TODO: Add form EDIT TODO
-        EditToDoForm editToDoForm = new EditToDoForm(_db);
+        EditToDoForm editToDoForm = new EditToDoForm(_db, toDoesListBox.SelectedItem);
 
         editToDoForm.Show();
     }

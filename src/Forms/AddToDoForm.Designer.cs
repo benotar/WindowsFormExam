@@ -83,12 +83,12 @@
             newTODOEndingDateTimePicker.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             newTODOEndingDateTimePicker.Format = DateTimePickerFormat.Custom;
             newTODOEndingDateTimePicker.Location = new Point(168, 212);
-            newTODOEndingDateTimePicker.MinDate = new DateTime(2024, 4, 6, 22, 5, 20, 0);
+            newTODOEndingDateTimePicker.MinDate = new DateTime(2000, 1, 1, 0, 0, 0, 0);
             newTODOEndingDateTimePicker.Name = "newTODOEndingDateTimePicker";
             newTODOEndingDateTimePicker.ShowUpDown = true;
             newTODOEndingDateTimePicker.Size = new Size(270, 30);
             newTODOEndingDateTimePicker.TabIndex = 4;
-            newTODOEndingDateTimePicker.Value = new DateTime(2024, 4, 6, 22, 5, 27, 0);
+            newTODOEndingDateTimePicker.Value = new DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // newTODOEndingDateLabel
             // 

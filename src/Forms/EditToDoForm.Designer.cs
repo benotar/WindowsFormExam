@@ -83,12 +83,12 @@
             editTODOEndingDateTimePicker.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             editTODOEndingDateTimePicker.Format = DateTimePickerFormat.Custom;
             editTODOEndingDateTimePicker.Location = new Point(168, 212);
-            editTODOEndingDateTimePicker.MinDate = new DateTime(2024, 4, 6, 22, 5, 20, 0);
+            editTODOEndingDateTimePicker.MinDate = new DateTime(2000, 1, 1, 0, 0, 0, 0);
             editTODOEndingDateTimePicker.Name = "editTODOEndingDateTimePicker";
             editTODOEndingDateTimePicker.ShowUpDown = true;
             editTODOEndingDateTimePicker.Size = new Size(270, 30);
             editTODOEndingDateTimePicker.TabIndex = 4;
-            editTODOEndingDateTimePicker.Value = new DateTime(2024, 4, 6, 22, 5, 27, 0);
+            editTODOEndingDateTimePicker.Value = new DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // editTODOEndingDateLabel
             // 
@@ -128,6 +128,7 @@
             Controls.Add(editTODOEndingDateTimePicker);
             Controls.Add(editTODOEndingDateLabel);
             Name = "EditToDoForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EditToDoForm";
             ResumeLayout(false);
             PerformLayout();
