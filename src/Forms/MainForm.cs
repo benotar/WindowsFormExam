@@ -15,7 +15,11 @@ public partial class MainForm : Form
     public MainForm()
     {
         _db = new DataContext();
+
         _synthesizer = new SpeechSynthesizer();
+
+        _synthesizer.SetOutputToDefaultAudioDevice();
+
         InitializeComponent();
     }
 
@@ -102,7 +106,7 @@ public partial class MainForm : Form
             return;
         }
 
-        InfoToDoForm infoToDoForm = new InfoToDoForm(selectedToDo);
+        InfoToDoForm infoToDoForm = new InfoToDoForm(selectedToDo, _synthesizer);
 
         infoToDoForm.Show();
     }

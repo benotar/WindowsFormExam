@@ -15,7 +15,7 @@ public class Todo
     [Column("created_date")]
     public DateTime CreatedDate { get; set; } = DateTime.Now;
     [Column("ending_date")]
-    public DateTime EndingDate { get; set;}
+    public DateTime EndingDate { get; set; }
 
     public override string ToString()
     {
@@ -43,6 +43,111 @@ public class Todo
             || a.EndingDate.Second != b.EndingDate.Second);
     }
 
+    public string CreatedDateString()
+    {
+        string result = $"{CreatedDate.Year}.";
+
+        if (CreatedDate.Month < 10)
+        {
+            result += $"0{CreatedDate.Month}.";
+        }
+        else
+        {
+            result += $"{CreatedDate.Month}.";
+        }
+
+        if (CreatedDate.Day < 10)
+        {
+            result += $"0{CreatedDate.Day}";
+        }
+        else
+        {
+            result += $"{CreatedDate.Day}";
+        }
+
+        if (CreatedDate.Hour < 10)
+        {
+            result += $" 0{CreatedDate.Hour}:";
+        }
+        else
+        {
+            result += $" {CreatedDate.Hour}:";
+        }
+
+        if (CreatedDate.Minute < 10)
+        {
+            result += $"0{CreatedDate.Minute}:";
+        }
+        else
+        {
+            result += $"{CreatedDate.Minute}:";
+        }
+
+        if (CreatedDate.Second < 10)
+        {
+            result += $"0{CreatedDate.Second}";
+        }
+        else
+        {
+            result += $"{CreatedDate.Second}";
+        }  
+
+        return result;
+    }
+
+    public string EndingDateString()
+    {
+        string result = $"{EndingDate.Year}.";
+
+        if (EndingDate.Month < 10)
+        {
+            result += $"0{EndingDate.Month}.";
+        }
+        else
+        {
+            result += $"{EndingDate.Month}.";
+        }
+
+        if (EndingDate.Day < 10)
+        {
+            result += $"0{EndingDate.Day}";
+        }
+        else
+        {
+            result += $"{EndingDate.Day}";
+        }
+
+        if (EndingDate.Hour < 10)
+        {
+            result += $" 0{EndingDate.Hour}:";
+        }
+        else
+        {
+            result += $" {EndingDate.Hour}:";
+        }
+
+        if (EndingDate.Minute < 10)
+        {
+            result += $"0{EndingDate.Minute}:";
+        }
+        else
+        {
+            result += $"{EndingDate.Minute}:";
+        }
+
+        if (EndingDate.Second < 10)
+        {
+            result += $"0{EndingDate.Second}";
+        }
+        else
+        {
+            result += $"{EndingDate.Second}";
+        }
+
+        return result;
+    }
+
+    // TODO: Delete if not use
     public Todo Clone()
     {
         return new Todo { Title = this.Title, Description = this.Description, CreatedDate = this.CreatedDate, EndingDate = this.EndingDate };
