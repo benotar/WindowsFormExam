@@ -14,7 +14,7 @@ namespace WindowsFormExam.Forms
 {
     public partial class AddToDoForm : Form
     {
-        private DataContext _db;
+        private readonly DataContext _db;
 
         public AddToDoForm(DataContext db)
         {

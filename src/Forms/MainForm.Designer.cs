@@ -32,7 +32,7 @@ partial class MainForm
         tittleLabel = new Label();
         deleteToDoButton = new Button();
         addToDoButton = new Button();
-        button1 = new Button();
+        editToDoButton = new Button();
         SuspendLayout();
         // 
         // toDoesListBox
@@ -89,19 +89,20 @@ partial class MainForm
         addToDoButton.UseVisualStyleBackColor = false;
         addToDoButton.Click += AddToDoButtonClick;
         // 
-        // button1
+        // editToDoButton
         // 
-        button1.BackColor = Color.Chartreuse;
-        button1.Cursor = Cursors.Hand;
-        button1.FlatAppearance.BorderSize = 3;
-        button1.Font = new Font("Cascadia Code", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-        button1.ForeColor = SystemColors.MenuText;
-        button1.Location = new Point(172, 466);
-        button1.Name = "button1";
-        button1.Size = new Size(142, 50);
-        button1.TabIndex = 4;
-        button1.Text = "Edit TODO";
-        button1.UseVisualStyleBackColor = false;
+        editToDoButton.BackColor = Color.Chartreuse;
+        editToDoButton.Cursor = Cursors.Hand;
+        editToDoButton.FlatAppearance.BorderSize = 3;
+        editToDoButton.Font = new Font("Cascadia Code", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+        editToDoButton.ForeColor = SystemColors.MenuText;
+        editToDoButton.Location = new Point(172, 466);
+        editToDoButton.Name = "editToDoButton";
+        editToDoButton.Size = new Size(142, 50);
+        editToDoButton.TabIndex = 4;
+        editToDoButton.Text = "Edit TODO";
+        editToDoButton.UseVisualStyleBackColor = false;
+        editToDoButton.Click += EditTodoButtonClick;
         // 
         // MainForm
         // 
@@ -109,7 +110,7 @@ partial class MainForm
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Teal;
         ClientSize = new Size(484, 539);
-        Controls.Add(button1);
+        Controls.Add(editToDoButton);
         Controls.Add(addToDoButton);
         Controls.Add(deleteToDoButton);
         Controls.Add(tittleLabel);
@@ -128,5 +129,5 @@ partial class MainForm
     private Label tittleLabel;
     private Button deleteToDoButton;
     private Button addToDoButton;
-    private Button button1;
+    private Button editToDoButton;
 }

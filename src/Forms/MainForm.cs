@@ -40,6 +40,20 @@ public partial class MainForm : Form
         addToDoForm.Show();
     }
 
+    private void EditTodoButtonClick(object sender, EventArgs e)
+    {
+        if (toDoesListBox.SelectedItem is null)
+        {
+            MessageBox.Show("Something went wrong! No TODO selected!");
+
+            return;
+        }
+
+        // TODO: Add form EDIT TODO
+        EditToDoForm editToDoForm = new EditToDoForm(_db);
+
+        editToDoForm.Show();
+    }
 
     public void RefreshListTODOMainForm()
     {
