@@ -150,7 +150,7 @@
             readDescriptionButton.TabIndex = 8;
             readDescriptionButton.Text = "Read Description";
             readDescriptionButton.UseVisualStyleBackColor = false;
-            readDescriptionButton.Click += ReadDescriptionButtonClick;
+            readDescriptionButton.Click += SpeakDescriptionButtonClick;
             // 
             // readAllInfoButton
             // 
@@ -162,7 +162,7 @@
             readAllInfoButton.Size = new Size(188, 47);
             readAllInfoButton.TabIndex = 9;
             readAllInfoButton.Text = "Read all info";
-            readAllInfoButton.Click += ReadAllInfoButtonClick;
+            readAllInfoButton.Click += SpeakAllInfoButtonClick;
             readAllInfoButton.UseVisualStyleBackColor = false;
             // 
             // pauseReadingButton

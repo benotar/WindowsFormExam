@@ -1,20 +1,26 @@
 using System.Speech.Synthesis;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using WindowsFormExam.Data;
 using WindowsFormExam.Entities;
+using WindowsFormExam.Helper;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WindowsFormExam.Forms;
 
 public partial class MainForm : Form
 {
-    private SpeechSynthesizer _synthesizer;
+    private SpeechSynthesizer? _synthesizer;
 
     private DataContext _db;
 
+    private List<Todo>? _todoes;
     public MainForm()
     {
         _db = new DataContext();
+
+        _synthesizer = new SpeechSynthesizer();
+
+        _todoes = null;
 
         InitializeComponent();
     }
@@ -24,12 +30,19 @@ public partial class MainForm : Form
     {
         titleLabel.Text = "TODO:";
 
-        List<Todo> todoes = _db.ToDoes.AsNoTracking().ToList();
+        string greetingText = "Welcome to the TODO application. Not for sale.";
 
-        foreach (var item in todoes)
+        SpeechSynthesizerExtension.SpeakText(ref _synthesizer, greetingText);
+
+        //Thread.Sleep(2000);
+
+        _todoes = _db.ToDoes.AsNoTracking().ToList();
+
+        foreach (var item in _todoes)
         {
             toDoesListBox.Items.Add(item);
         }
+
 
     }
 
@@ -119,8 +132,13 @@ public partial class MainForm : Form
         }
     }
 
-    private void ReadText(string text)
-    {
 
+    private IEnumerable<DateTime> GetEndingDates(List<Todo> todoes)
+    {
+        foreach (var todo in todoes)
+        {
+            yield return todo.EndingDate;
+        }
     }
+
 }

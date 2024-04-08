@@ -1,5 +1,6 @@
 ﻿using System.Speech.Synthesis;
 using WindowsFormExam.Entities;
+using WindowsFormExam.Helper;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace WindowsFormExam.Forms;
@@ -40,21 +41,26 @@ public partial class InfoToDoForm : Form
         _descText = descriptionRichTextBox.Text = _todo.Description;
     }
 
-    private void ReadDescriptionButtonClick(object sender, EventArgs e)
+    private void SpeakDescriptionButtonClick(object sender, EventArgs e)
     {
         _textFlag = false;
 
-        ReadText(_descText);
+        SpeechSynthesizerExtension.SpeakText(ref _synthesizer, _descText);
+
+        //SpeakText(_descText);
     }
 
-    private void ReadAllInfoButtonClick(object sender, EventArgs e)
+    private void SpeakAllInfoButtonClick(object sender, EventArgs e)
     {
         _allInfoText = $"Title - {titleLabel.Text}. Date of create {createDateLabel.Text}. Complete by {endingDateLabel.Text}.\n" +
             $"Description: {_descText}.";
 
         _textFlag = true;
 
-        ReadText(_allInfoText);
+        SpeechSynthesizerExtension.SpeakText(ref _synthesizer, _allInfoText);
+
+
+        //SpeakText(_allInfoText);
     }
 
     private void PauseButtonClick(object sender, EventArgs e)
@@ -81,11 +87,16 @@ public partial class InfoToDoForm : Form
         {
             if (_textFlag)
             {
-                ReadText(_allInfoText);
+                SpeechSynthesizerExtension.SpeakText(ref _synthesizer, _allInfoText);
+
+                //SpeakText(_allInfoText);
             }
             else
             {
-                ReadText(_descText);
+                SpeechSynthesizerExtension.SpeakText(ref _synthesizer, _descText);
+
+
+                //SpeakText(_descText);
             }
         }
     }
@@ -110,22 +121,22 @@ public partial class InfoToDoForm : Form
         }
     }
 
-    private void ReadText(string text)
-    {
-        if (!string.IsNullOrEmpty(text))
-        {
-            if (_synthesizer is not null)
-            {
-                _synthesizer.Dispose();
-            }
+    //private void SpeakText(string text)
+    //{
+    //    if (!string.IsNullOrEmpty(text))
+    //    {
+    //        if (_synthesizer is not null)
+    //        {
+    //            _synthesizer.Dispose();
+    //        }
 
-            _synthesizer = new SpeechSynthesizer();
+    //        _synthesizer = new SpeechSynthesizer();
 
-            _synthesizer.SpeakAsync(text);
-        }
-        else
-        {
-            MessageBox.Show("Please enter some text first!");
-        }
-    }
+    //        _synthesizer.SpeakAsync(text);
+    //    }
+    //    else
+    //    {
+    //        MessageBox.Show("Please enter some text first!");
+    //    }
+    //}
 }
