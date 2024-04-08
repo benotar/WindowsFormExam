@@ -49,21 +49,15 @@ public class Todo
 
         if (CreatedDate.Month < 10)
         {
-            result += $"0{CreatedDate.Month}.";
+            result += $"0";
         }
-        else
-        {
-            result += $"{CreatedDate.Month}.";
-        }
+        result += $"{CreatedDate.Month}.";
 
         if (CreatedDate.Day < 10)
         {
-            result += $"0{CreatedDate.Day}";
+            result += $"0";
         }
-        else
-        {
-            result += $"{CreatedDate.Day}";
-        }
+        result += $"{CreatedDate.Day}";
 
         if (CreatedDate.Hour < 10)
         {
@@ -76,21 +70,16 @@ public class Todo
 
         if (CreatedDate.Minute < 10)
         {
-            result += $"0{CreatedDate.Minute}:";
+            result += $"0";
         }
-        else
-        {
-            result += $"{CreatedDate.Minute}:";
-        }
+        result += $"{CreatedDate.Minute}:";
+
 
         if (CreatedDate.Second < 10)
         {
-            result += $"0{CreatedDate.Second}";
+            result += $"0";
         }
-        else
-        {
-            result += $"{CreatedDate.Second}";
-        }  
+        result += $"{CreatedDate.Second}";
 
         return result;
     }
@@ -101,21 +90,15 @@ public class Todo
 
         if (EndingDate.Month < 10)
         {
-            result += $"0{EndingDate.Month}.";
+            result += $"0";
         }
-        else
-        {
-            result += $"{EndingDate.Month}.";
-        }
+        result += $"{EndingDate.Month}.";
 
         if (EndingDate.Day < 10)
         {
-            result += $"0{EndingDate.Day}";
+            result += $"0";
         }
-        else
-        {
-            result += $"{EndingDate.Day}";
-        }
+        result += $"{EndingDate.Day}";
 
         if (EndingDate.Hour < 10)
         {
@@ -128,21 +111,16 @@ public class Todo
 
         if (EndingDate.Minute < 10)
         {
-            result += $"0{EndingDate.Minute}:";
+            result += $"0";
         }
-        else
-        {
-            result += $"{EndingDate.Minute}:";
-        }
+        result += $"{EndingDate.Minute}:";
+
 
         if (EndingDate.Second < 10)
         {
-            result += $"0{EndingDate.Second}";
+            result += $"0";
         }
-        else
-        {
-            result += $"{EndingDate.Second}";
-        }
+        result += $"{EndingDate.Second}";
 
         return result;
     }
