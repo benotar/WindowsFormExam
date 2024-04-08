@@ -8,59 +8,54 @@ public partial class InfoToDoForm : Form
 {
     private Todo? _todo;
 
-    private SpeechSynthesizer _synthesizer = new SpeechSynthesizer();
+    private SpeechSynthesizer? _synthesizer;
+
+    private string _descText;
+
+    private string _allInfoText;
+
+    private bool _textFlag;
 
     public InfoToDoForm(object? toDoesListBoxItem)
     {
         _todo = toDoesListBoxItem as Todo;
 
+        _synthesizer = new SpeechSynthesizer();
+
+        _allInfoText = _descText = string.Empty;
+
+        _textFlag = false;
+
         InitializeComponent();
     }
 
-    // TODO
     private void InfoToDoFormLoad(object sender, EventArgs e)
     {
-        titleLabel.Text = _todo.Title;
-        createDateLable.Text = _todo.CreatedDateString();
+        titleLabel.Text = _todo!.Title;
+
+        createDateLabel.Text = _todo.CreatedDateString();
+
         endingDateLabel.Text = _todo.EndingDateString();
-        descriptionRichTextBox.Text = _todo.Description;
+
+        _descText = descriptionRichTextBox.Text = _todo.Description;
     }
 
     private void ReadDescriptionButtonClick(object sender, EventArgs e)
     {
-        string text = descriptionRichTextBox.Text;
+        _textFlag = false;
 
-        if (!string.IsNullOrEmpty(text))
-        {
-            _synthesizer.Dispose();
-
-            _synthesizer = new SpeechSynthesizer();
-
-            _synthesizer.SpeakAsync(text);
-        }
-        else
-        {
-            MessageBox.Show("Please enter some text first!");
-        }
-
-        //ReadText(descriptionRichTextBox.Text);
+        ReadText(_descText);
     }
 
-    //private async void ReadText(string text)
-    //{
-    //    if (!string.IsNullOrEmpty(text))
-    //    {
-    //        _synthesizer.Dispose();
+    private void ReadAllInfoButtonClick(object sender, EventArgs e)
+    {
+        _allInfoText = $"Title - {titleLabel.Text}. Date of create {createDateLabel.Text}. Complete by {endingDateLabel.Text}.\n" +
+            $"Description: {_descText}.";
 
-    //        _synthesizer = new SpeechSynthesizer();
+        _textFlag = true;
 
-    //        _synthesizer.SpeakAsync(text);
-    //    }
-    //    else
-    //    {
-    //        MessageBox.Show("Please enter some text first!");
-    //    }
-    //}
+        ReadText(_allInfoText);
+    }
 
     private void PauseButtonClick(object sender, EventArgs e)
     {
@@ -84,28 +79,53 @@ public partial class InfoToDoForm : Form
         }
         else
         {
-            string text = descriptionRichTextBox.Text;
-
-            if (!string.IsNullOrEmpty(text))
+            if (_textFlag)
             {
-                //_synthesizer.Dispose();
-
-                _synthesizer = new SpeechSynthesizer();
-
-                _synthesizer.SpeakAsync(text);
+                ReadText(_allInfoText);
             }
             else
             {
-                MessageBox.Show("Please enter some text first!");
+                ReadText(_descText);
             }
         }
     }
 
     private void StopButtonClick(object sender, EventArgs e)
     {
+        StopSpeak();
+    }
+
+    private void InfoToDoFormClosing(object sender, FormClosingEventArgs e)
+    {
+        StopSpeak();
+    }
+
+    private void StopSpeak()
+    {
         if (_synthesizer is not null)
         {
             _synthesizer.Dispose();
+
+            _synthesizer = null;
+        }
+    }
+
+    private void ReadText(string text)
+    {
+        if (!string.IsNullOrEmpty(text))
+        {
+            if (_synthesizer is not null)
+            {
+                _synthesizer.Dispose();
+            }
+
+            _synthesizer = new SpeechSynthesizer();
+
+            _synthesizer.SpeakAsync(text);
+        }
+        else
+        {
+            MessageBox.Show("Please enter some text first!");
         }
     }
 }

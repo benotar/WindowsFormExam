@@ -30,7 +30,7 @@
         {
             infoTitleLabel = new Label();
             titleLabel = new Label();
-            createDateLable = new Label();
+            createDateLabel = new Label();
             createDateInfoLabel = new Label();
             endingDateLabel = new Label();
             endingDateInfoLabel = new Label();
@@ -67,17 +67,17 @@
             titleLabel.TabIndex = 1;
             titleLabel.Text = "TEMP";
             // 
-            // createDateLable
+            // createDateLabel
             // 
-            createDateLable.AutoSize = true;
-            createDateLable.BackColor = SystemColors.Info;
-            createDateLable.Font = new Font("Cascadia Mono", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            createDateLable.ForeColor = SystemColors.InfoText;
-            createDateLable.Location = new Point(206, 72);
-            createDateLable.Name = "createDateLable";
-            createDateLable.Size = new Size(56, 25);
-            createDateLable.TabIndex = 3;
-            createDateLable.Text = "TEMP";
+            createDateLabel.AutoSize = true;
+            createDateLabel.BackColor = SystemColors.Info;
+            createDateLabel.Font = new Font("Cascadia Mono", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            createDateLabel.ForeColor = SystemColors.InfoText;
+            createDateLabel.Location = new Point(206, 72);
+            createDateLabel.Name = "createDateLabel";
+            createDateLabel.Size = new Size(56, 25);
+            createDateLabel.TabIndex = 3;
+            createDateLabel.Text = "TEMP";
             // 
             // createDateInfoLabel
             // 
@@ -162,6 +162,7 @@
             readAllInfoButton.Size = new Size(188, 47);
             readAllInfoButton.TabIndex = 9;
             readAllInfoButton.Text = "Read all info";
+            readAllInfoButton.Click += ReadAllInfoButtonClick;
             readAllInfoButton.UseVisualStyleBackColor = false;
             // 
             // pauseReadingButton
@@ -187,8 +188,8 @@
             resumeButton.Size = new Size(135, 47);
             resumeButton.TabIndex = 11;
             resumeButton.Text = "Resume";
-            resumeButton.Click += ResumeButtonClick;
             resumeButton.UseVisualStyleBackColor = false;
+            resumeButton.Click += ResumeButtonClick;
             // 
             // stopButton
             // 
@@ -200,8 +201,8 @@
             stopButton.Size = new Size(135, 47);
             stopButton.TabIndex = 12;
             stopButton.Text = "Stop";
-            stopButton.Click += StopButtonClick;
             stopButton.UseVisualStyleBackColor = false;
+            stopButton.Click += StopButtonClick;
             // 
             // InfoToDoForm
             // 
@@ -218,7 +219,7 @@
             Controls.Add(descriptionRichTextBox);
             Controls.Add(endingDateLabel);
             Controls.Add(endingDateInfoLabel);
-            Controls.Add(createDateLable);
+            Controls.Add(createDateLabel);
             Controls.Add(createDateInfoLabel);
             Controls.Add(titleLabel);
             Controls.Add(infoTitleLabel);
@@ -226,6 +227,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "InfoToDoForm";
             Load += InfoToDoFormLoad;
+            FormClosing += InfoToDoFormClosing;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -234,7 +236,7 @@
 
         private Label infoTitleLabel;
         private Label titleLabel;
-        private Label createDateLable;
+        private Label createDateLabel;
         private Label createDateInfoLabel;
         private Label endingDateLabel;
         private Label endingDateInfoLabel;
