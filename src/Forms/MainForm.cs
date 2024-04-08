@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using WindowsFormExam.Data;
 using WindowsFormExam.Entities;
 using WindowsFormExam.Helper;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace WindowsFormExam.Forms;
 
@@ -25,7 +24,6 @@ public partial class MainForm : Form
         InitializeComponent();
     }
 
-
     private void MainFormLoad(object sender, EventArgs e)
     {
         titleLabel.Text = "TODO:";
@@ -34,16 +32,12 @@ public partial class MainForm : Form
 
         SpeechSynthesizerExtension.SpeakText(ref _synthesizer, greetingText);
 
-        //Thread.Sleep(2000);
-
         _todoes = _db.ToDoes.AsNoTracking().ToList();
 
         foreach (var item in _todoes)
         {
             toDoesListBox.Items.Add(item);
         }
-
-
     }
 
     private void AddToDoButtonClick(object sender, EventArgs e)
@@ -62,7 +56,6 @@ public partial class MainForm : Form
             return;
         }
 
-        // TODO: Add form EDIT TODO
         EditToDoForm editToDoForm = new EditToDoForm(_db, toDoesListBox.SelectedItem);
 
         editToDoForm.Show();
@@ -131,8 +124,6 @@ public partial class MainForm : Form
             toDoesListBox.Items.Add(item);
         }
     }
-
-
     private IEnumerable<DateTime> GetEndingDates(List<Todo> todoes)
     {
         foreach (var todo in todoes)
@@ -140,5 +131,4 @@ public partial class MainForm : Form
             yield return todo.EndingDate;
         }
     }
-
 }

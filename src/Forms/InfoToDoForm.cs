@@ -1,7 +1,6 @@
 ﻿using System.Speech.Synthesis;
 using WindowsFormExam.Entities;
 using WindowsFormExam.Helper;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace WindowsFormExam.Forms;
 
@@ -46,8 +45,6 @@ public partial class InfoToDoForm : Form
         _textFlag = false;
 
         SpeechSynthesizerExtension.SpeakText(ref _synthesizer, _descText);
-
-        //SpeakText(_descText);
     }
 
     private void SpeakAllInfoButtonClick(object sender, EventArgs e)
@@ -58,9 +55,6 @@ public partial class InfoToDoForm : Form
         _textFlag = true;
 
         SpeechSynthesizerExtension.SpeakText(ref _synthesizer, _allInfoText);
-
-
-        //SpeakText(_allInfoText);
     }
 
     private void PauseButtonClick(object sender, EventArgs e)
@@ -88,15 +82,10 @@ public partial class InfoToDoForm : Form
             if (_textFlag)
             {
                 SpeechSynthesizerExtension.SpeakText(ref _synthesizer, _allInfoText);
-
-                //SpeakText(_allInfoText);
             }
             else
             {
                 SpeechSynthesizerExtension.SpeakText(ref _synthesizer, _descText);
-
-
-                //SpeakText(_descText);
             }
         }
     }
@@ -120,23 +109,4 @@ public partial class InfoToDoForm : Form
             _synthesizer = null;
         }
     }
-
-    //private void SpeakText(string text)
-    //{
-    //    if (!string.IsNullOrEmpty(text))
-    //    {
-    //        if (_synthesizer is not null)
-    //        {
-    //            _synthesizer.Dispose();
-    //        }
-
-    //        _synthesizer = new SpeechSynthesizer();
-
-    //        _synthesizer.SpeakAsync(text);
-    //    }
-    //    else
-    //    {
-    //        MessageBox.Show("Please enter some text first!");
-    //    }
-    //}
 }

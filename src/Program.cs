@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using WindowsFormExam.Data;
 using WindowsFormExam.Forms;
 
 namespace WindowsWormExam;

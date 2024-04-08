@@ -44,7 +44,9 @@ public partial class EditToDoForm : Form
         if (updateTODO is not null)
         {
             updateTODO.Title = newTodo.Title;
+
             updateTODO.Description = newTodo.Description;
+
             updateTODO.EndingDate = newTodo.EndingDate;
 
             _db.SaveChanges();

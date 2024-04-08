@@ -146,10 +146,4 @@ public class Todo
 
         return result;
     }
-
-    // TODO: Delete if not use
-    public Todo Clone()
-    {
-        return new Todo { Title = this.Title, Description = this.Description, CreatedDate = this.CreatedDate, EndingDate = this.EndingDate };
-    }
 }
