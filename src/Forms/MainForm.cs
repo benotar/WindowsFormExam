@@ -13,6 +13,7 @@ public partial class MainForm : Form
     private DataContext _db;
 
     private List<Todo>? _todoes;
+
     public MainForm()
     {
         _db = new DataContext();
@@ -124,11 +125,11 @@ public partial class MainForm : Form
             toDoesListBox.Items.Add(item);
         }
     }
-    private IEnumerable<DateTime> GetEndingDates(List<Todo> todoes)
-    {
-        foreach (var todo in todoes)
-        {
-            yield return todo.EndingDate;
-        }
-    }
+    //private IEnumerable<DateTime> GetEndingDates(List<Todo> todoes)
+    //{
+    //    foreach (var todo in todoes)
+    //    {
+    //        yield return todo.EndingDate;
+    //    }
+    //}
 }
