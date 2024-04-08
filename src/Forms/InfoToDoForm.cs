@@ -1,59 +1,111 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Speech.Synthesis;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Speech.Synthesis;
 using WindowsFormExam.Entities;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace WindowsFormExam.Forms
+namespace WindowsFormExam.Forms;
+
+public partial class InfoToDoForm : Form
 {
-    public partial class InfoToDoForm : Form
+    private Todo? _todo;
+
+    private SpeechSynthesizer _synthesizer = new SpeechSynthesizer();
+
+    public InfoToDoForm(object? toDoesListBoxItem)
     {
-        private Todo? _todo;
+        _todo = toDoesListBoxItem as Todo;
 
-        private SpeechSynthesizer _synthesizer;
+        InitializeComponent();
+    }
 
-        private CancellationTokenSource _cancellationTokenSource;
+    // TODO
+    private void InfoToDoFormLoad(object sender, EventArgs e)
+    {
+        titleLabel.Text = _todo.Title;
+        createDateLable.Text = _todo.CreatedDateString();
+        endingDateLabel.Text = _todo.EndingDateString();
+        descriptionRichTextBox.Text = _todo.Description;
+    }
 
-        public InfoToDoForm(object? toDoesListBoxItem, SpeechSynthesizer synthesizer)
+    private void ReadDescriptionButtonClick(object sender, EventArgs e)
+    {
+        string text = descriptionRichTextBox.Text;
+
+        if (!string.IsNullOrEmpty(text))
         {
-            _todo = toDoesListBoxItem as Todo;
+            _synthesizer.Dispose();
 
-            _synthesizer = synthesizer;
-
-            InitializeComponent();
-        }
-
-        // TODO
-        private void InfoToDoFormLoad(object sender, EventArgs e)
-        {
-            titleLabel.Text = _todo.Title;
-            createDateLable.Text = _todo.CreatedDateString();
-            endingDateLabel.Text = _todo.EndingDateString();
-            descriptionRichTextBox.Text = _todo.Description;
-        }
-
-        private void ReadDescriptionButtonClick(object sender, EventArgs e)
-        {
-            string read = descriptionRichTextBox.Text;
-
-            ReadText(read);
-        }
-
-        private async void ReadText(string text)
-        {
+            _synthesizer = new SpeechSynthesizer();
 
             _synthesizer.SpeakAsync(text);
         }
-
-        private void PauseReadingButtonClick(object sender, EventArgs e)
+        else
         {
-            _synthesizer.Pause();
+            MessageBox.Show("Please enter some text first!");
+        }
+
+        //ReadText(descriptionRichTextBox.Text);
+    }
+
+    //private async void ReadText(string text)
+    //{
+    //    if (!string.IsNullOrEmpty(text))
+    //    {
+    //        _synthesizer.Dispose();
+
+    //        _synthesizer = new SpeechSynthesizer();
+
+    //        _synthesizer.SpeakAsync(text);
+    //    }
+    //    else
+    //    {
+    //        MessageBox.Show("Please enter some text first!");
+    //    }
+    //}
+
+    private void PauseButtonClick(object sender, EventArgs e)
+    {
+        if (_synthesizer is not null)
+        {
+            if (_synthesizer.State == SynthesizerState.Speaking)
+            {
+                _synthesizer.Pause();
+            }
+        }
+    }
+
+    private void ResumeButtonClick(object sender, EventArgs e)
+    {
+        if (_synthesizer is not null)
+        {
+            if (_synthesizer.State == SynthesizerState.Paused)
+            {
+                _synthesizer.Resume();
+            }
+        }
+        else
+        {
+            string text = descriptionRichTextBox.Text;
+
+            if (!string.IsNullOrEmpty(text))
+            {
+                //_synthesizer.Dispose();
+
+                _synthesizer = new SpeechSynthesizer();
+
+                _synthesizer.SpeakAsync(text);
+            }
+            else
+            {
+                MessageBox.Show("Please enter some text first!");
+            }
+        }
+    }
+
+    private void StopButtonClick(object sender, EventArgs e)
+    {
+        if (_synthesizer is not null)
+        {
+            _synthesizer.Dispose();
         }
     }
 }

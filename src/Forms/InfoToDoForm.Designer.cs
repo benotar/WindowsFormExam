@@ -39,6 +39,8 @@
             readDescriptionButton = new Button();
             readAllInfoButton = new Button();
             pauseReadingButton = new Button();
+            resumeButton = new Button();
+            stopButton = new Button();
             SuspendLayout();
             // 
             // infoTitleLabel
@@ -144,7 +146,7 @@
             readDescriptionButton.ForeColor = SystemColors.InactiveCaptionText;
             readDescriptionButton.Location = new Point(12, 508);
             readDescriptionButton.Name = "readDescriptionButton";
-            readDescriptionButton.Size = new Size(188, 47);
+            readDescriptionButton.Size = new Size(193, 47);
             readDescriptionButton.TabIndex = 8;
             readDescriptionButton.Text = "Read Description";
             readDescriptionButton.UseVisualStyleBackColor = false;
@@ -167,13 +169,39 @@
             pauseReadingButton.BackColor = Color.DarkSeaGreen;
             pauseReadingButton.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             pauseReadingButton.ForeColor = SystemColors.InactiveCaptionText;
-            pauseReadingButton.Location = new Point(310, 508);
+            pauseReadingButton.Location = new Point(211, 508);
             pauseReadingButton.Name = "pauseReadingButton";
-            pauseReadingButton.Size = new Size(188, 47);
+            pauseReadingButton.Size = new Size(135, 47);
             pauseReadingButton.TabIndex = 10;
-            pauseReadingButton.Text = "Pause Reading";
+            pauseReadingButton.Text = "Pause";
             pauseReadingButton.UseVisualStyleBackColor = false;
-            pauseReadingButton.Click += PauseReadingButtonClick;
+            pauseReadingButton.Click += PauseButtonClick;
+            // 
+            // resumeButton
+            // 
+            resumeButton.BackColor = Color.DarkSeaGreen;
+            resumeButton.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            resumeButton.ForeColor = SystemColors.InactiveCaptionText;
+            resumeButton.Location = new Point(352, 508);
+            resumeButton.Name = "resumeButton";
+            resumeButton.Size = new Size(135, 47);
+            resumeButton.TabIndex = 11;
+            resumeButton.Text = "Resume";
+            resumeButton.Click += ResumeButtonClick;
+            resumeButton.UseVisualStyleBackColor = false;
+            // 
+            // stopButton
+            // 
+            stopButton.BackColor = Color.DarkSeaGreen;
+            stopButton.Font = new Font("Cascadia Mono SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            stopButton.ForeColor = SystemColors.InactiveCaptionText;
+            stopButton.Location = new Point(493, 508);
+            stopButton.Name = "stopButton";
+            stopButton.Size = new Size(135, 47);
+            stopButton.TabIndex = 12;
+            stopButton.Text = "Stop";
+            stopButton.Click += StopButtonClick;
+            stopButton.UseVisualStyleBackColor = false;
             // 
             // InfoToDoForm
             // 
@@ -181,6 +209,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.CornflowerBlue;
             ClientSize = new Size(834, 564);
+            Controls.Add(stopButton);
+            Controls.Add(resumeButton);
             Controls.Add(pauseReadingButton);
             Controls.Add(readAllInfoButton);
             Controls.Add(readDescriptionButton);
@@ -213,5 +243,7 @@
         private Button readDescriptionButton;
         private Button readAllInfoButton;
         private Button pauseReadingButton;
+        private Button resumeButton;
+        private Button stopButton;
     }
 }
